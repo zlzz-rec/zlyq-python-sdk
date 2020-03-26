@@ -20,11 +20,11 @@ from zlyqsync.client import SyncClient
 from zlyqmodel.user import UserInfo
 
 # 同步用户数据
-userClient = SyncClient("key", "secret", 123, "http://testappapi.zplatform.cn")
+userClient = SyncClient("f1edf8b4ff55610c129dc1626e6dd71f", "7de548e902debd7ca6aac1f5c6ec802e", 402918291821943819, "http://testappapi.zplatform.cn")
 
 userInfo = UserInfo()
-userInfo.udid = "ABC"
-userInfo.Nickname = "test name"
+userInfo.udid = "AKDHA-KAJFO-KA81K-9HQ1L"
+userInfo.Nickname = "小米粒"
 userInfo.gender = 1
 
 print(userClient.userInfoSynchronize(userInfo))
@@ -36,14 +36,29 @@ from zlyqsync.client import SyncClient
 from zlyqmodel.history import TrackInfo, TrackCommon, TrackLike, TrackFinishVideo
 
 if __name__ == "__main__":
-    trackClient = SyncClient("key", "secret", 123, "http://testtrackapi.zplatform.cn")
+    trackClient = SyncClient("f1edf8b4ff55610c129dc1626e6dd71f", "7de548e902debd7ca6aac1f5c6ec802e", 402918291821943819, "http://testtrackapi.zplatform.cn")
 
     trackCommon = TrackCommon()
-    trackCommon.udid = "ABC"
-    trackCommon.userId = 123
+    trackCommon.udid = "AKDHA-KAJFO-KA81K-9HQ1L"
+    trackCommon.userId = 404910192718291827
+    trackCommon.distinctId = 409181916271928172 
+    trackCommon.appId = 402918291821943819 
+    trackCommon.platform =  
+    trackCommon.time = 1585239477000 
+    trackCommon.screenHeight = 670 
+    trackCommon.screenWidth = 375   
+    trackCommon.manufacturer = "huawei"
+    trackCommon.network = 4
+    trackCommon.os = 2        
+    trackCommon.osVersion = 11.2.4         
+    trackCommon.ip = 212.29.35.12    
+    trackCommon.country = "中国"           
+    trackCommon.province = "北京"    
+    trackCommon.city = "北京"   
+    trackCommon.carrier = 电信
     trackLike = TrackLike()
     trackLike.event = "like"
-    trackLike.contentId = 40192918191901
+    trackLike.contentId = 401929181919011928
     trackLike.contentType = 1
     trackFinishVideo = TrackFinishVideo()
     trackFinishVideo.event = "finishVideo"
