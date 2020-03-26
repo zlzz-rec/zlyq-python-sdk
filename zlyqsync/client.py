@@ -6,8 +6,7 @@ import json
 import os, sys
 
 sys.path.append("..")
-from auth import sign as signAuth, appToken as appTokenAuth
-from model import history, user
+from zlyqauth import sign as signAuth, appToken as appTokenAuth
 
 @dataclass
 class SyncClient():
@@ -43,4 +42,3 @@ class SyncClient():
     def historySynchronize(self, trackInfo):
         body = asdict(trackInfo)
         return self.__httpPost(self.address, "/trace", None, body)
-
