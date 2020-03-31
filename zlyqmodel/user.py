@@ -4,7 +4,6 @@ from dataclasses import dataclass
 class UserInfo:
     thirdId      :       str   = ""
     account      :       str   = ""
-    password     :       str   = ""
     nickname     :       str   = ""
     avatar       :       str   = ""
     gender       :       int   = 0
