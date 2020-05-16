@@ -5,7 +5,7 @@ from zlyqsync.client import SyncClient
 from zlyqmodel.history import TrackInfo, TrackCommon, TrackLike, TrackFinishVideo
 
 if __name__ == "__main__":
-    trackClient = SyncClient("key", "secret", 123, "http://testtrackapi.zplatform.cn")
+    trackClient = SyncClient("{your-app-key}", "{your-app-secret}", 123, "http://testtrackapi.zplatform.cn")
 
     trackCommon = TrackCommon()
     trackCommon.udid = "ABC"

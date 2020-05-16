@@ -1,81 +1,45 @@
 ### 中量引擎服务端SDK (Python)
 
 ##### 安装方法
+
 ```
 pip install zlyq-python-sdk
 ```
 
-##### 中量引擎官方文档
+##### 中量引擎官网
+
+``` https://www.zplatform.cn/
+https://www.zplatform.cn/
 ```
+
+##### 中量引擎官方文档
+
+```https://wiki.zplatform.cn/
 https://wiki.zplatform.cn/
 ```
 
 ##### SDK说明
-本SDK封装了向中量引擎服务同步用户数据、媒资数据及用户历史交互数据的方法
 
-##### 接口调用示例
-同步用户信息
-```
-from zlyqsync.client import SyncClient
-from zlyqmodel.user import UserInfo
+对于以下接入方式:"中量引擎Saas服务接入"或"私有化部署方式接入", 本SDK提供了两个不同的SyncClient来解决数据同步的问题, 其中:
 
-# 同步用户数据
-userClient = SyncClient("f1edf8b4ff55610c129dc1626e6dd71f", "7de548e902debd7ca6aac1f5c6ec802e", 402918291821943819, "http://testappapi.zplatform.cn")
+* 私有化部署方式提供了向私有化部署服务上报埋点的方法及设置用户画像方法; SyncClient初始化参数需要从私有化服务后台获取
 
-userInfo = UserInfo()
-userInfo.thirdId = '51982'
-userInfo.udid = "ABC"
-userInfo.nickname = "test name"
-userInfo.gender = 1
-userInfo.account = "xiaoming"
-userInfo.avatar = "http://www.baidu.com"
-userInfo.phone = "10000000000"
+* Saas服务方式提供了向中量引擎服务同步用户数据、媒资数据及埋点数据(用户历史交互数据)的方法; SyncClient初始化参数需要从中量引擎后台获取
 
-print(userClient.userInfoSynchronize(userInfo))
-```
+##### 调用方式
 
-同步用户历史交互信息
-```
-from zlyqsync.client import SyncClient
-from zlyqmodel.history import TrackInfo, TrackCommon, TrackLike, TrackFinishVideo
+调用方式请参考`zlyqtest`目录下的`XXXtest.py`文件
+注意:
+1.以下是面向私有化方式的test文件:
 
-trackClient = SyncClient("f1edf8b4ff55610c129dc1626e6dd71f", "7de548e902debd7ca6aac1f5c6ec802e", 402918291821943819, "http://testtrackapi.zplatform.cn")
+* tracktest.py    埋点上报到私有化服务
+* profiletest.py    设置用户画像到私有化服务
 
-trackCommon = TrackCommon()
-trackCommon.udid = "AKDHA-KAJFO-KA81K-9HQ1L"
-trackCommon.userId = 404910192718291827
-trackCommon.distinctId = 409181916271928172 
-trackCommon.appId = 402918291821943819 
-trackCommon.platform =  
-trackCommon.time = 1585239477000 
-trackCommon.screenHeight = 670 
-trackCommon.screenWidth = 375   
-trackCommon.manufacturer = "huawei"
-trackCommon.network = 4
-trackCommon.os = 2        
-trackCommon.osVersion = 11.2.4         
-trackCommon.ip = 212.29.35.12    
-trackCommon.country = "中国"           
-trackCommon.province = "北京"    
-trackCommon.city = "北京"   
-trackCommon.carrier = 电信
-trackLike = TrackLike()
-trackLike.event = "like"
-trackLike.contentId = 401929181919011928
-trackLike.contentType = 1
-trackFinishVideo = TrackFinishVideo()
-trackFinishVideo.event = "finishVideo"
-trackFinishVideo.contentId = 40192918191901
-trackFinishVideo.contentType = 1
-trackFinishVideo.videoTime = 15
-trackFinishVideo.duration = 10
-trackFinishVideo.isFinish = 0
+2.以下是面向Saas方式的test文件:
 
-properties = [trackLike, trackFinishVideo]
-
-trackInfo = TrackInfo()
-trackInfo.common = trackCommon
-trackInfo.properties = properties
-
-print(trackClient.historySynchronize(trackInfo))
-```
+* historytest.py    埋点及历史交互行为同步
+* usertest.py    同步用户信息到中量服务
+* mediatest.py    同步媒资相关交互行为信息到中量服务
+* videotest.py    同步视频到中量服务
+* articletest.py    同步图文到中量服务
+* imagetest.py    上传图片到中量服务

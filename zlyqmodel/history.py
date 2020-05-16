@@ -97,7 +97,6 @@ class TrackDislikeComment(EventCommon):
     commentId    : int = 0
 
 
-
 if __name__ == "__main__":
     trackCommon = TrackCommon()
     print(trackCommon)
