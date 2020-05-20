@@ -1,10 +1,6 @@
-from zlyqsync.client import SyncClient
-from zlyqmodel.image import *
+from ..zlyqsync.client import SyncClient
+from ..zlyqmodel.image import *
 import time
-import sys
-
-sys.path.append('..')
-
 
 def uploadImage():
     imageClient = SyncClient(

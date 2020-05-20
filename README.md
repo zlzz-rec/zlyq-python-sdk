@@ -43,3 +43,8 @@ https://wiki.zplatform.cn/
 * videotest.py    同步视频到中量服务
 * articletest.py    同步图文到中量服务
 * imagetest.py    上传图片到中量服务
+
+3.请在工程根目录上一级以模块方式运行test文件, 示例
+```
+python3 -m zlyq-python-sdk.zlyqtest.tracktest
+```

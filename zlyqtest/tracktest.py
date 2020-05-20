@@ -1,38 +1,38 @@
-import sys
-sys.path.append('..')
-
-from zlyqsync.private_client import SyncClient
-from zlyqmodel.track import TrackCommon, TrackInfo, AppInstall
-from zlyqmodel.common import Platform, SdkType, Network, Os, Carrier
+from ..zlyqsync.private_client import SyncClient
+from ..zlyqmodel.track import TrackCommon, TrackInfo, AppInstall
+from ..zlyqmodel.common_define import Platform, SdkType, Network, Os, Carrier
 
 if __name__ == "__main__":
-    syncClient = SyncClient(projectId=2,
-                             apiKey="{your-api-key}",
-                             address="{your-track-node}"
-                             )
+    sync_client = SyncClient(project_id=2,
+                            #api_key="{your-api-key}",
+                            #address="{your-address}",
+                            api_key="abcdefg",
+                            address="http://123.56.169.183:8210",
+                            debug_mode=1
+                            )
 
-    trackCommon = TrackCommon()
-    trackCommon.udid = "abcd"
-    trackCommon.user_id = "1234"
-    trackCommon.distinct_id = "6039281029182710291"
-    trackCommon.platform = Platform.IOS.value
-    trackCommon.sdk_type = SdkType.IOS.value
-    trackCommon.sdk_version = "1.0.1"
-    trackCommon.screen_height = 650
-    trackCommon.screen_width = 350
-    trackCommon.manufacturer = "huawei"
-    trackCommon.model = "huawei P40"
-    trackCommon.network = Network.N_4G.value
-    trackCommon.os = Os.IOS.value
-    trackCommon.os_version = "12.1.1"
-    trackCommon.carrier = Carrier.CHINA_UNICOM.value
-    trackCommon.app_version = "1.0.1"
+    track_common = TrackCommon()
+    track_common.udid = "abcd"
+    track_common.user_id = "1234"
+    track_common.distinct_id = "6039281029182710291"
+    track_common.platform = Platform.IOS.value
+    track_common.sdk_type = SdkType.IOS.value
+    track_common.sdk_version = "1.0.1"
+    track_common.screen_height = 650
+    track_common.screen_width = 350
+    track_common.manufacturer = "huawei"
+    track_common.model = "huawei P40"
+    track_common.network = Network.N_4G.value
+    track_common.os = Os.IOS.value
+    track_common.os_version = "12.1.1"
+    track_common.carrier = Carrier.CHINA_UNICOM.value
+    track_common.app_version = "1.0.1"
 
     appInstall = AppInstall()
     properties = [appInstall]
 
-    trackInfo = TrackInfo()
-    trackInfo.common = trackCommon
-    trackInfo.properties = properties
+    track_info = TrackInfo()
+    track_info.common = track_common
+    track_info.properties = properties
     
-    print(syncClient.track(trackInfo))
+    print(sync_client.track(track_info))

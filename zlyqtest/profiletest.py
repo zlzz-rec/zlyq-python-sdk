@@ -1,35 +1,32 @@
-import sys
-sys.path.append('..')
-
-from zlyqsync.private_client import SyncClient
-from zlyqmodel.profile import *
+from ..zlyqsync.private_client import SyncClient
+from ..zlyqmodel.profile import UserProfile, UserProfileCommon, UserProfileInfo
 
 if __name__ == "__main__":
-    syncClient = SyncClient(projectId=2,
-                             apiKey="{your-api-key}",
-                             address="{your-profile-node}"
-                             )
-    userProfile = UserProfile()
+    sync_client = SyncClient(project_id=2,
+                            #api_key="{your-api-key}",
+                            #address="{your-address}",
+                            api_key="abcdefg",
+                            address="http://123.56.169.183:8210",
+                            debug_mode=1
+                            )
 
-    userProfile.user_id = "123"
-    userProfile.distinct_id = "6020103928102918274"
-    userProfile.udid = "abcdefg"
-    userProfile.birthday = "1990-01-01 20:00:00"
-    userProfile.name = "小脑斧"
-    userProfile.gender = "男"
-    userProfile.browser = "chrome"
-    userProfile.browser_version = "1.0.0"
-    userProfile.first_visit_time = "2020-02-02 20:00:00"
-    userProfile.utm_source = "toutiao"
-    userProfile.utm_media = "cpc"
-    userProfile.utm_campaign = "app"
-    userProfile.utm_content = "20200101"
-    userProfile.utm_term = "delicacy"
-    userProfile.os = Os.IOS.value
-    userProfile.os_version = "10.0.1"
-    userProfile.sdk_type = SdkType.IOS.value
-    userProfile.sdk_version = "1.0.1"
-    userProfile.app_version = "2.0.0"
+    user_profile = UserProfile()
+    user_profile.birthday = "1990-01-01 20:00:00"
+    user_profile.name = "小脑斧"
+    user_profile.gender = "男"
+    user_profile.utm_source = "toutiao"
+    user_profile.utm_media = "cpc"
+    user_profile.utm_campaign = "app"
+    user_profile.utm_content = "20200101"
+    user_profile.utm_term = "delicacy"
 
-    print(syncClient.setUserProfile(userProfile))
+    user_profile_common = UserProfileCommon()
+    user_profile_common.distinct_id = "6039281029182710291"
+    user_profile_common.user_id = "1234"
+    user_profile_common.type = "1234"
 
+    user_profile_info = UserProfileInfo()
+    user_profile_info.common = user_profile_common
+    user_profile_info.property = user_profile
+
+    sync_client.setUserProfileOnce(user_profile_info)

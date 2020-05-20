@@ -29,3 +29,7 @@ class Carrier(Enum):
     CHINE_TELECOM = "中国电信"
     CHINA_MOBILE = "中国移动"
     CHINA_UNICOM = "中国联通"
+
+
+if __name__ == "__main__":
+    pass

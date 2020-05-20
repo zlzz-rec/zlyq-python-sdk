@@ -1,9 +1,5 @@
-import sys
-
-sys.path.append('..')
-
-from zlyqsync.client import SyncClient
-from zlyqmodel.media import *
+from ..zlyqsync.client import SyncClient
+from ..zlyqmodel.media import *
 import time
 
 

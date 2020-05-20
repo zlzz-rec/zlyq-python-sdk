@@ -1,8 +1,5 @@
-import sys
-sys.path.append('..')
-
-from zlyqsync.client import SyncClient
-from zlyqmodel.user import UserInfo
+from ..zlyqsync.client import SyncClient
+from ..zlyqmodel.user import UserInfo
 
 if __name__ == "__main__":
     userClient = SyncClient(

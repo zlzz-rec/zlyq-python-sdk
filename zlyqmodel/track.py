@@ -1,7 +1,6 @@
 from dataclasses import dataclass, asdict
 from typing import List
-from enum import Enum
-from .common import *
+from .common_define import Platform, Os, SdkType, Network, Carrier
 
 import time
 import datetime
@@ -40,8 +39,11 @@ class EventCommon():
 
 @dataclass
 class TrackInfo():
-    common:TrackCommon = None
-    properties:List[EventCommon] = None
+    project_id    : int = 0
+    debug_mode    : int = 1
+    type          : str = "track"
+    common        : TrackCommon = None
+    properties    : List[EventCommon] = None
 
 @dataclass
 class AppInstall(EventCommon):
@@ -63,30 +65,31 @@ class AppEnd(EventCommon):
         self.event_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
 if __name__ == "__main__":
-    trackCommon = TrackCommon()
-    trackCommon.udid = "abcd"
-    trackCommon.user_id = "1234"
-    trackCommon.distinct_id = "6039281029182710291"
-    trackCommon.platform = Platform.IOS.value
-    trackCommon.sdk_type = SdkType.IOS.value
-    trackCommon.sdk_version = "1.0.1"
-    trackCommon.screen_height = 650.0
-    trackCommon.screen_width = 350.0
-    trackCommon.manufacturer = "huawei"
-    trackCommon.model = "huawei P40"
-    trackCommon.network = Network.N_4G.value
-    trackCommon.os = Os.IOS.value
-    trackCommon.os_version = "12.1.1"
-    trackCommon.carrier = Carrier.CHINA_UNICOM.value
-    trackCommon.app_version = "1.0.1"
+    track_common = TrackCommon()
+    track_common.udid = "abcd"
+    track_common.user_id = "1234"
+    track_common.distinct_id = "6039281029182710291"
+    track_common.platform = Platform.IOS.value
+    track_common.sdk_type = SdkType.IOS.value
+    track_common.sdk_version = "1.0.1"
+    track_common.screen_height = 650.0
+    track_common.screen_width = 350.0
+    track_common.manufacturer = "huawei"
+    track_common.model = "huawei P40"
+    track_common.network = Network.N_4G.value
+    track_common.os = Os.IOS.value
+    track_common.os_version = "12.1.1"
+    track_common.carrier = Carrier.CHINA_UNICOM.value
+    track_common.app_version = "1.0.1"
 
-    appInstall = AppInstall()
-    properties = [appInstall]
+    app_install = AppInstall()
+    properties = [app_install]
     
-    trackInfo = TrackInfo()
-    trackInfo.common = trackCommon
-    trackInfo.properties = properties
-    print(json.dumps(asdict(trackInfo)))
+    track_info = TrackInfo()
+    track_info.project_id = 2
+    track_info.common = track_common
+    track_info.properties = properties
+    print(json.dumps(asdict(track_info)))
 
 
 

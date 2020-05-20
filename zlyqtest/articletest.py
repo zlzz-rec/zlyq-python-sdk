@@ -1,10 +1,7 @@
 import time
-import sys
 
-sys.path.append('..')
-
-from zlyqmodel.article import *
-from zlyqsync.client import SyncClient
+from ..zlyqmodel.article import *
+from ..zlyqsync.client import SyncClient
 
 
 def syncArticle():

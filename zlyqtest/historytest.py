@@ -1,8 +1,5 @@
-import sys
-sys.path.append('..')
-
-from zlyqsync.client import SyncClient
-from zlyqmodel.history import TrackInfo, TrackCommon, TrackLike, TrackFinishVideo
+from ..zlyqsync.client import SyncClient
+from ..zlyqmodel.history import TrackInfo, TrackCommon, TrackLike, TrackFinishVideo
 
 if __name__ == "__main__":
     trackClient = SyncClient("{your-app-key}", "{your-app-secret}", 123, "http://testtrackapi.zplatform.cn")

@@ -1,15 +1,15 @@
 import time
 import hashlib
 
-def addSign(urlParams, apiKey):
-    urlParams['time'] = int(time.time() * 1000)
+def addSign(params, apiKey):
+    params['time'] = int(time.time() * 1000)
 
-    keys = [key for key in urlParams.keys()]
+    keys = [key for key in params.keys()]
     keys.sort()
 
     values = []
     for key in keys:
-        values.append(key + '=' + str(urlParams[key]))
+        values.append(key + '=' + str(params[key]))
 
     string = "&".join(values)
 

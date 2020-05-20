@@ -1,11 +1,9 @@
 from dataclasses import dataclass, asdict
+from requests_toolbelt.multipart.encoder import MultipartEncoder
+from ..zlyqauth import sign as signAuth, appToken as appTokenAuth
+
 import requests
 import json
-import os, sys
-from requests_toolbelt.multipart.encoder import MultipartEncoder
-
-sys.path.append("..")
-from zlyqauth import sign as signAuth, appToken as appTokenAuth
 
 @dataclass
 class SyncClient():
