@@ -1,5 +1,5 @@
 from ..zlyqsync.private_client import SyncClient
-from ..zlyqmodel.profile import UserProfile, UserProfileCommon, UserProfileInfo
+from ..zlyqmodel.profile import UserProfile, UserProfileCommon, UserProfileInfo, DebugMode
 
 if __name__ == "__main__":
     sync_client = SyncClient(project_id=2,
@@ -7,7 +7,7 @@ if __name__ == "__main__":
                             #address="{your-address}",
                             api_key="abcdefg",
                             address="http://123.56.169.183:8210",
-                            debug_mode=1
+                            debug_mode=DebugMode.NO_DEBUG_MODE.value
                             )
 
     user_profile = UserProfile()
@@ -29,4 +29,4 @@ if __name__ == "__main__":
     user_profile_info.common = user_profile_common
     user_profile_info.property = user_profile
 
-    sync_client.setUserProfileOnce(user_profile_info)
+    print(sync_client.setUserProfileOnce(user_profile_info))

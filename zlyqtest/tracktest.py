@@ -1,6 +1,6 @@
 from ..zlyqsync.private_client import SyncClient
 from ..zlyqmodel.track import TrackCommon, TrackInfo, AppInstall
-from ..zlyqmodel.common_define import Platform, SdkType, Network, Os, Carrier
+from ..zlyqmodel.common_define import Platform, SdkType, Network, Os, Carrier, DebugMode
 
 if __name__ == "__main__":
     sync_client = SyncClient(project_id=2,
@@ -8,7 +8,7 @@ if __name__ == "__main__":
                             #address="{your-address}",
                             api_key="abcdefg",
                             address="http://123.56.169.183:8210",
-                            debug_mode=1
+                            debug_mode=DebugMode.NO_DEBUG_MODE.value
                             )
 
     track_common = TrackCommon()

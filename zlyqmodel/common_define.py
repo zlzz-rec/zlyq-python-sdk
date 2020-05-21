@@ -30,6 +30,11 @@ class Carrier(Enum):
     CHINA_MOBILE = "中国移动"
     CHINA_UNICOM = "中国联通"
 
+class DebugMode(Enum):
+    NO_DEBUG_MODE = "no_debug"
+    DEBUG_AND_IMPORT = "debug_and_import"
+    DEBUG_AND_NOT_IMPORT = "debug_and_not_import"
+
 
 if __name__ == "__main__":
     pass

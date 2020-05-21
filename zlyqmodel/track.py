@@ -1,6 +1,6 @@
 from dataclasses import dataclass, asdict
 from typing import List
-from .common_define import Platform, Os, SdkType, Network, Carrier
+from .common_define import Platform, Os, SdkType, Network, Carrier, DebugMode
 
 import time
 import datetime
@@ -40,7 +40,7 @@ class EventCommon():
 @dataclass
 class TrackInfo():
     project_id    : int = 0
-    debug_mode    : int = 1
+    debug_mode    : str = DebugMode.NO_DEBUG_MODE.value
     type          : str = "track"
     common        : TrackCommon = None
     properties    : List[EventCommon] = None

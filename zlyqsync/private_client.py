@@ -1,6 +1,7 @@
 from dataclasses import dataclass, asdict
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 from ..zlyqauth import private_sign as signAuth
+from ..zlyqmodel.common_define import DebugMode
 
 import requests
 import json
@@ -10,7 +11,7 @@ class SyncClient():
     project_id:int
     api_key:str
     address:str
-    debug_mode:int = 1
+    debug_mode:str = DebugMode.NO_DEBUG_MODE.value
 
     def __buildHeader(self, params):
         header = {}
@@ -21,7 +22,6 @@ class SyncClient():
         return header, urlParam
 
     def __httpPost(self, address, apiUrl, params, body):
-        print(body)
         params = params if params else {}
         header, urlParams = self.__buildHeader(body)
         urlStr = address + apiUrl + "?" + urlParams
@@ -51,49 +51,49 @@ class SyncClient():
         trackInfo.project_id = self.project_id
         trackInfo.debug_mode = self.debug_mode
         body = asdict(trackInfo)
-        return self.__httpPost(self.address, f"/trace/", None, body)
+        return self.__httpPost(self.address, f"/api/v1/track/{self.project_id}", None, body)
 
     def setUserProfile(self, userProfileInfo):
         userProfileInfo.project_id = self.project_id
         userProfileInfo.debug_mode = self.debug_mode
         userProfileInfo.common.type = "set"
         body = asdict(userProfileInfo)
-        return self.__httpPost(self.address, f"/api/v1/profile_user/{self.project_id}", None, body)
+        return self.__httpPost(self.address, f"/api/v1/user_profile/{self.project_id}", None, body)
 
     def setUserProfileOnce(self, userProfileInfo):
         userProfileInfo.project_id = self.project_id
         userProfileInfo.debug_mode = self.debug_mode
         userProfileInfo.common.type = "set_once"
         body = asdict(userProfileInfo)
-        return self.__httpPost(self.address, f"/api/v1/profile_user/{self.project_id}", None, body)
+        return self.__httpPost(self.address, f"/api/v1/user_profile/{self.project_id}", None, body)
 
     def appendUserProfileOnce(self, userProfileInfo):
         userProfileInfo.project_id = self.project_id
         userProfileInfo.debug_mode = self.debug_mode
         userProfileInfo.common.type = "append"
         body = asdict(userProfileInfo)
-        return self.__httpPost(self.address, f"/api/v1/profile_user/{self.project_id}", None, body)
+        return self.__httpPost(self.address, f"/api/v1/user_profile/{self.project_id}", None, body)
 
     def increaseUserProfileOnce(self, userProfileInfo):
         userProfileInfo.project_id = self.project_id
         userProfileInfo.debug_mode = self.debug_mode
         userProfileInfo.common.type = "increase"
         body = asdict(userProfileInfo)
-        return self.__httpPost(self.address, f"/api/v1/profile_user/{self.project_id}", None, body)
+        return self.__httpPost(self.address, f"/api/v1/user_profile/{self.project_id}", None, body)
 
     def deleteUserProfileOnce(self, userProfileInfo):
         userProfileInfo.project_id = self.project_id
         userProfileInfo.debug_mode = self.debug_mode
         userProfileInfo.common.type = "delete"
         body = asdict(userProfileInfo)
-        return self.__httpPost(self.address, f"/api/v1/profile_user/{self.project_id}", None, body)
+        return self.__httpPost(self.address, f"/api/v1/user_profile/{self.project_id}", None, body)
 
     def unsetUserProfileOnce(self, userProfileInfo):
         userProfileInfo.project_id = self.project_id
         userProfileInfo.debug_mode = self.debug_mode
         userProfileInfo.common.type = "unset"
         body = asdict(userProfileInfo)
-        return self.__httpPost(self.address, f"/api/v1/profile_user/{self.project_id}", None, body)
+        return self.__httpPost(self.address, f"/api/v1/user_profile/{self.project_id}", None, body)
 
 if __name__ == "__main__":
     syncClient = SyncClient(project_id=2,

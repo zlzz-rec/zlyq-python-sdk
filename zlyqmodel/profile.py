@@ -1,6 +1,6 @@
 from dataclasses import dataclass, asdict
 from typing import List
-from .common_define import *
+from .common_define import DebugMode, Os, SdkType
 
 import datetime
 import time
@@ -45,7 +45,7 @@ class UserProfile():
 @dataclass
 class UserProfileInfo():
     project_id          : int = 0
-    debug_mode          : int = 1
+    debug_mode          : str = DebugMode.NO_DEBUG_MODE.value
     type                : str = "user_profile"
     common              : UserProfileCommon = None
     property            : UserProfile = None
