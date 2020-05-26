@@ -23,7 +23,6 @@ if __name__ == "__main__":
     user_profile_common = UserProfileCommon()
     user_profile_common.distinct_id = "6039281029182710291"
     user_profile_common.user_id = "1234"
-    user_profile_common.type = "1234"
 
     user_profile_info = UserProfileInfo()
     user_profile_info.common = user_profile_common

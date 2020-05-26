@@ -67,28 +67,28 @@ class SyncClient():
         body = asdict(userProfileInfo)
         return self.__httpPost(self.address, f"/api/v1/user_profile/{self.project_id}", None, body)
 
-    def appendUserProfileOnce(self, userProfileInfo):
+    def appendUserProfile(self, userProfileInfo):
         userProfileInfo.project_id = self.project_id
         userProfileInfo.debug_mode = self.debug_mode
         userProfileInfo.common.type = "append"
         body = asdict(userProfileInfo)
         return self.__httpPost(self.address, f"/api/v1/user_profile/{self.project_id}", None, body)
 
-    def increaseUserProfileOnce(self, userProfileInfo):
+    def increaseUserProfile(self, userProfileInfo):
         userProfileInfo.project_id = self.project_id
         userProfileInfo.debug_mode = self.debug_mode
         userProfileInfo.common.type = "increase"
         body = asdict(userProfileInfo)
         return self.__httpPost(self.address, f"/api/v1/user_profile/{self.project_id}", None, body)
 
-    def deleteUserProfileOnce(self, userProfileInfo):
+    def deleteUserProfile(self, userProfileInfo):
         userProfileInfo.project_id = self.project_id
         userProfileInfo.debug_mode = self.debug_mode
         userProfileInfo.common.type = "delete"
         body = asdict(userProfileInfo)
         return self.__httpPost(self.address, f"/api/v1/user_profile/{self.project_id}", None, body)
 
-    def unsetUserProfileOnce(self, userProfileInfo):
+    def unsetUserProfile(self, userProfileInfo):
         userProfileInfo.project_id = self.project_id
         userProfileInfo.debug_mode = self.debug_mode
         userProfileInfo.common.type = "unset"
