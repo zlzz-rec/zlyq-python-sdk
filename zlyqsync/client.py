@@ -5,12 +5,13 @@ from ..zlyqauth import sign as signAuth, appToken as appTokenAuth
 import requests
 import json
 
+
 @dataclass
 class SyncClient():
-    appKey:str
-    appSecret:str
-    appId:int
-    address:int
+    appKey: str
+    appSecret: str
+    appId: int
+    address: int
 
     def __buildHeader(self, params):
         header = {}
@@ -51,6 +52,10 @@ class SyncClient():
     def userInfoSynchronize(self, userInfo):
         body = asdict(userInfo)
         return self.__httpPost(self.address, "/api/v1/synchronize/userInfo", None, body)
+
+    def userFollowSynchronize(self, userFollow):
+        body = asdict(userFollow)
+        return self.__httpPost(self.address, "/api/v1/synchronize/userFollow", None, body)
 
     def historySynchronize(self, trackInfo):
         body = asdict(trackInfo)
