@@ -5,7 +5,7 @@ setup(
     version = "0.0.3",
     keywords = ("pip", "pathtool","timetool", "magetool", "mage"),
     description = "data synchronization tools for zlyq service",
-    long_description = "data synchronization tools for zlyq service, for now including user data, content data and user history data",
+    long_description = "data synchronization tools for zlyq service, for now including user data, content data and user track data",
     license = "MIT Licence",
 
     url = "https://github.com/zlzz-rec/zlyq-python-sdk",

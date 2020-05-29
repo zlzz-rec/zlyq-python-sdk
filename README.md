@@ -37,7 +37,7 @@ https://wiki.zplatform.cn/
 
 2.以下是面向Saas方式的test文件:
 
-* historytest.py    埋点及历史交互行为同步
+* saastracktest.py    埋点及历史交互行为同步
 * usertest.py    同步用户信息到中量服务
 * mediatest.py    同步媒资相关交互行为信息到中量服务
 * videotest.py    同步视频到中量服务

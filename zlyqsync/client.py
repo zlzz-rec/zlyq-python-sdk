@@ -57,7 +57,7 @@ class SyncClient():
         body = asdict(userFollow)
         return self.__httpPost(self.address, "/api/v1/synchronize/userFollow", None, body)
 
-    def historySynchronize(self, trackInfo):
+    def track(self, trackInfo):
         body = asdict(trackInfo)
         return self.__httpPost(self.address, "/trace", None, body)
 
