@@ -18,33 +18,55 @@ https://www.zplatform.cn/
 https://wiki.zplatform.cn/
 ```
 
-##### SDK说明
+##### 集成中量分析服务(私有化)
+集成中量分析服务的用户, 请使用private_client下的SyncClient, 初始化参数需要从私有化服务后台获取。 
 
-对于以下接入方式:"中量引擎Saas服务接入"或"私有化部署方式接入", 本SDK提供了两个不同的SyncClient来解决数据同步的问题, 其中:
-
-* 私有化部署方式提供了向私有化部署服务上报埋点的方法及设置用户画像方法; SyncClient初始化参数需要从私有化服务后台获取
-
-* Saas服务方式提供了向中量引擎服务同步用户数据、媒资数据及埋点数据(用户历史交互数据)的方法; SyncClient初始化参数需要从中量引擎后台获取
-
-##### 调用方式
+SyncClient提供了上报埋点的方法及设置用户画像方法。
 
 调用方式请参考`zlyqtest`目录下的`XXXtest.py`文件
-注意:
-1.以下是面向私有化方式的test文件:
 
-* tracktest.py    埋点上报到私有化服务
-* profiletest.py    设置用户画像到私有化服务
+* private_tracktest.py    
+    + presetEvent         上报预置事件埋点
+    + customEvent         上报自定义事件埋点
+* private_profiletest.py  设置用户画像
 
-2.以下是面向Saas方式的test文件:
+##### 集成中量引擎推荐服务(Saas)
+集成中量引擎推荐服务的用户, 请使用client下的SyncClient, SyncClient初始化参数需要从中量引擎后台获取。
 
-* saastracktest.py    埋点及历史交互行为同步
-* usertest.py    同步用户信息到中量服务
-* mediatest.py    同步媒资相关交互行为信息到中量服务
-* videotest.py    同步视频到中量服务
-* articletest.py    同步图文到中量服务
-* imagetest.py    上传图片到中量服务
+Saas服务方式提供了向中量引擎服务同步用户数据、媒资数据及埋点数据(以及用户历史交互数据)的方法。 
 
-3.请在工程根目录上一级以模块方式运行test文件, 示例
+注意:`同步`是指将信息(包括上传得到的id)同步到中量引擎服务, 因为业务方只需要推荐结果然后自行组装数据所以不需要将源文件上传到中量服务。
+
+调用方式请参考`zlyqtest`目录下的`XXXtest.py`文件
+
+* tracktest.py          埋点数据同步
+* usertest.py           用户数据同步
+* videotest.py          
+    + syncVideo         视频数据同步         
+* articletest.py        
+    + syncArticle       图文数据同步               
+
+##### 集成中量引擎推荐服务(私有化)
+中量引擎私有化服务可以针对任何形式的物品进行推荐分发, 例如:音乐、游戏、商品等等。如果您有这类的推荐分发需求请在中量引擎官网联系客服。
+
+##### 集成中量引擎推荐服务及客户端信息流SDK(Sass)
+集成中量引擎推荐服务的用户, 请使用client下的SyncClient, SyncClient初始化参数需要从中量引擎后台获取。
+
+Saas服务方式提供了向中量引擎服务同步用户数据、媒资数据及埋点数据(以及用户历史交互数据)的方法。 
+
+注意:`上传`是指将源文件上传到中量引擎进而获取主键id的过程; `同步`是指将信息(包括上传得到的id)同步到中量引擎服务。因为业务方需要使用推荐结果加上配到的客户端信息流SDK, 所以需要上传源文件到中量服务。
+
+调用方式请参考`zlyqtest`目录下的`XXXtest.py`文件
+
+* tracktest.py          埋点数据同步
+* usertest.py           用户数据同步
+* videotest.py          
+    + uploadVideo       上传视频及封图源文件并同步  
+* articletest.py        
+    + uploadArticle     上传图片源文件并同步(图片源文件可能多个, 需要先通过`imagetest`上传图片获取主键id再调用此方法)
+* imagetest.py          上传图片, 获取图片主键
+
+3.项目使用相对路径, 请在工程根目录上一级以模块方式运行test文件, 示例
 ```
 python3 -m zlyq-python-sdk.zlyqtest.tracktest
 ```

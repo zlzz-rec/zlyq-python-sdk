@@ -3,7 +3,6 @@ import time
 from ..zlyqmodel.article import *
 from ..zlyqsync.client import SyncClient
 
-
 def syncArticle():
     articleClient = SyncClient(
         appKey="bb4ddb451bdd80af204d9f464fbf07df",
@@ -24,6 +23,7 @@ def syncArticle():
                         longitude=30,
                         latitude=120,
                         source=1,
+                        mediaType=2,
                         thirdId="fdanklh",
                         thirdExtra="",
                         createdAt=int(time.time() * 1000))
