@@ -1,10 +1,11 @@
 from dataclasses import dataclass, asdict
 from requests_toolbelt.multipart.encoder import MultipartEncoder
-from ..zlyqauth import private_sign as signAuth
+from ..zlyqauth.private_sign import Signer
 from ..zlyqmodel.common_define import DebugMode
 
 import requests
 import json
+import time
 
 @dataclass
 class SyncClient():
@@ -15,35 +16,21 @@ class SyncClient():
 
     def __buildHeader(self, params):
         header = {}
-        sign, urlParam = signAuth.addSign(params, self.api_key)
+        signer = Signer(apiKey=self.api_key)
+        sign = signer.genSign(params)
         header['Content-Type'] = 'application/json'
-        header['X-Sign'] = sign
+        header['Z-Sign'] = sign
 
-        return header, urlParam
+        return header, signer.urlString
 
     def __httpPost(self, address, apiUrl, params, body):
         params = params if params else {}
-        header, urlParams = self.__buildHeader(body)
+        params['time'] = int(time.time() * 1000)
+        header, urlParams = self.__buildHeader(params)
         urlStr = address + apiUrl + "?" + urlParams
 
         datas = json.dumps(body)
         resp = requests.post(urlStr, data=datas, headers=header)
-
-        return resp.text
-
-    def __httpMultiForm(self, address, apiUrl, params, body):
-        params = params if params else {}
-        header, urlParams = self.__buildHeader(body)
-        urlStr = address + apiUrl + "?" + urlParams
-
-        multipart_encoder = MultipartEncoder(
-            fields=body,
-        )
-        header['Content-Type'] = multipart_encoder.content_type
-        resp = requests.post(
-            urlStr,
-            data=multipart_encoder,
-            headers=header)
 
         return resp.text
 
