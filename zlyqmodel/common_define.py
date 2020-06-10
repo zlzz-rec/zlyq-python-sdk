@@ -1,13 +1,13 @@
 from enum import Enum
 
 class Platform(Enum):
-    IOS = "Ios"
+    IOS = "iOS"
     ANDROID = "Android"
     H5 = "H5"
     MP = "Mp"
 
 class SdkType(Enum):
-    IOS = "Ios"
+    IOS = "iOS"
     ANDROID = "Android"
     H5 = "H5"
     MP = "Mp"
@@ -19,7 +19,7 @@ class Network(Enum):
     N_WIFI = "wifi"
 
 class Os(Enum):
-    IOS = "Ios"
+    IOS = "iOS"
     ANDROID = "Android"
     WINDOWS_PHONE = "Windows phone"
     YUN_OS = "YunOS"

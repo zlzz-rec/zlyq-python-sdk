@@ -28,7 +28,6 @@ class SyncClient():
         params['time'] = int(time.time() * 1000)
         header, urlParams = self.__buildHeader(params)
         urlStr = address + apiUrl + "?" + urlParams
-
         datas = json.dumps(body)
         resp = requests.post(urlStr, data=datas, headers=header)
 
@@ -83,7 +82,7 @@ class SyncClient():
         return self.__httpPost(self.address, f"/api/v1/user_profile/{self.project_id}", None, body)
 
 if __name__ == "__main__":
-    syncClient = SyncClient(project_id=2,
+    syncClient = SyncClient(project_id=1,
                     api_key="{your-api-key}",
                     address="{your-address}"
                     )

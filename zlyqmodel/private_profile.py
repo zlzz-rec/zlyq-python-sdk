@@ -18,8 +18,6 @@ class UserProfileCommon():
 
 @dataclass
 class UserProfile():
-    user_id             : str = ""	
-    distinct_id	        : str = ""
     udid	        : str = ""
     birthday	        : str = ""
     name                : str = ""

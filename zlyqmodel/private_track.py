@@ -86,7 +86,7 @@ if __name__ == "__main__":
     properties = [app_install]
     
     track_info = TrackInfo()
-    track_info.project_id = 2
+    track_info.project_id = 1
     track_info.common = track_common
     track_info.properties = properties
     print(json.dumps(asdict(track_info)))
