@@ -26,9 +26,9 @@ class Os(Enum):
     SYMBIAN = "Symbian"
 
 class Carrier(Enum):
-    CHINE_TELECOM = "中国电信"
-    CHINA_MOBILE = "中国移动"
-    CHINA_UNICOM = "中国联通"
+    CHINE_TELECOM = "电信"
+    CHINA_MOBILE = "移动"
+    CHINA_UNICOM = "联通"
 
 class DebugMode(Enum):
     NO_DEBUG_MODE = "no_debug"
